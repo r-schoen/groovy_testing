@@ -1,0 +1,2 @@
+rootProject.name = "groovytesting"
+include 'bluewhale', 'krill', 'tropicalFish'

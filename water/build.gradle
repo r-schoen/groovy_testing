@@ -1,0 +1,28 @@
+/* Rewritten below
+Closure cl = { task -> println "I'm $task.project.name" }
+task('hello').doLast(cl)
+project(':bluewhale') {
+	task('hello').doLast(cl)
+}*/
+
+allprojects {
+	task hello {
+		doLast { task -> 
+			println "Hello, My name is $task.project.name"
+		}
+	}
+}
+subprojects {
+	hello {
+		doLast {
+			println " - I depend on water"
+		}
+	}
+}
+configure(subprojects.findAll {it.name != 'tropicalFish'}) {
+	hello {
+		doLast {
+			println " - I love to spend time in arctic waters"
+		}
+	}
+}
